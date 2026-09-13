@@ -47,6 +47,120 @@
       background-image: radial-gradient(#2A2E35 0.75px, transparent 0.75px);
       background-size: 16px 16px;
     }
+
+    /* ================================================================= */
+    /* SPLASH SCREEN / PRELOADER */
+    /* ================================================================= */
+    .preloader-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #0A0B0D;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s ease;
+      will-change: opacity, visibility;
+    }
+
+    .preloader-overlay.preloader-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+    }
+
+    .preloader-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1rem, 2.5vmin, 2rem);
+      padding: clamp(1rem, 4vmin, 3rem);
+      text-align: center;
+      max-width: 90vw;
+    }
+
+    .preloader-logo-wrapper {
+      animation: preloaderScaleUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-origin: center center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .preloader-logo-img {
+      /* Proporcional dinamicamente ao tamanho da página (largura e altura via vmin) */
+      width: clamp(130px, 30vmin, 340px);
+      height: clamp(130px, 30vmin, 340px);
+      max-width: 75vw;
+      max-height: 35vh;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 32px rgba(255, 184, 0, 0.3));
+    }
+
+    .preloader-bar-track {
+      width: clamp(100px, 18vmin, 180px);
+      height: clamp(2px, 0.35vmin, 4px);
+      background-color: rgba(42, 46, 53, 0.85);
+      border-radius: 9999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .preloader-bar-thumb {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, #FFB800, #FFC837, transparent);
+      animation: preloaderLineMove 1.4s ease-in-out infinite;
+      border-radius: 9999px;
+    }
+
+    @keyframes preloaderScaleUp {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.0);
+      }
+    }
+
+    @keyframes preloaderLineMove {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* Acessibilidade: Respeito a prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .preloader-overlay {
+        transition: none !important;
+      }
+      .preloader-logo-wrapper {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+      .preloader-bar-thumb {
+        animation: none !important;
+        width: 100% !important;
+        transform: none !important;
+        background: #FFB800 !important;
+      }
+    }
   </style>
 
   <!-- Correção de rota GitHub Pages e Injeção Instantânea de Identidade Visual -->
@@ -59,6 +173,92 @@
 
 </head>
 <body class="bg-industrial-black text-industrial-light font-sans antialiased selection:bg-target-yellow selection:text-black overflow-x-hidden w-full">
+
+  <!-- ================================================================= -->
+  <!-- PRELOADER / SPLASH SCREEN INICIAL -->
+  <!-- ================================================================= -->
+  <div id="preloader" role="status" aria-busy="true" aria-label="Carregando Target Pinturas e Reformas" class="preloader-overlay">
+    <div class="preloader-container">
+      <div class="preloader-logo-wrapper">
+        <img 
+          id="preloader-logo" 
+          src="logo.png" 
+          data-brand-logo="true"
+          alt="Target Pinturas e Reformas" 
+          class="preloader-logo-img" 
+        />
+        <script>
+          if (window.TARGET_LOGO) {
+            document.getElementById('preloader-logo').src = window.TARGET_LOGO;
+          }
+        </script>
+      </div>
+      <!-- Indicador sutil de carregamento industrial -->
+      <div class="preloader-bar-track" aria-hidden="true">
+        <div class="preloader-bar-thumb"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function() {
+      const startTime = performance.now();
+      const MIN_DISPLAY_TIME = 1000; // Mínimo 1s de exibição para percepção visual
+      const MAX_DISPLAY_TIME = 3000; // Máximo 3s de segurança (fallback)
+      let isDismissed = false;
+
+      function dismissPreloader() {
+        if (isDismissed) return;
+        isDismissed = true;
+
+        const preloader = document.getElementById('preloader');
+        if (!preloader) return;
+
+        const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (prefersReducedMotion) {
+          preloader.classList.add('preloader-hidden');
+          preloader.setAttribute('aria-busy', 'false');
+          preloader.setAttribute('aria-hidden', 'true');
+          preloader.style.display = 'none';
+          if (preloader.parentNode) {
+            preloader.parentNode.removeChild(preloader);
+          }
+          return;
+        }
+
+        // Transição de saída: opacity: 0 e pointer-events: none
+        preloader.classList.add('preloader-hidden');
+        preloader.setAttribute('aria-busy', 'false');
+        preloader.setAttribute('aria-hidden', 'true');
+
+        // Remover do fluxo do DOM após os 0.5s de transição suave
+        setTimeout(function() {
+          if (preloader.parentNode) {
+            preloader.parentNode.removeChild(preloader);
+          }
+        }, 550);
+      }
+
+      function handleReady() {
+        const elapsed = performance.now() - startTime;
+        const remaining = Math.max(0, MIN_DISPLAY_TIME - elapsed);
+        setTimeout(dismissPreloader, remaining);
+      }
+
+      // Tempo máximo de segurança (3 segundos)
+      const safetyFallback = setTimeout(dismissPreloader, MAX_DISPLAY_TIME);
+
+      if (document.readyState === 'complete') {
+        clearTimeout(safetyFallback);
+        handleReady();
+      } else {
+        window.addEventListener('load', function() {
+          clearTimeout(safetyFallback);
+          handleReady();
+        }, { once: true });
+      }
+    })();
+  </script>
 
   <!-- ================================================================= -->
   <!-- BLOCO 1: BARRA DE ALERTA TÉCNICO & ATENDIMENTO REGIONAL -->
