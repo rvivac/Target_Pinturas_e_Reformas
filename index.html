@@ -356,36 +356,38 @@
         <script>document.currentScript.previousElementSibling.src = window.TARGET_LOGO;</script>
       </a>
 
-      <!-- Grade de Navegação 2x2 Exclusiva para Mobile (Proporcional ao Logo 2x) -->
-      <nav aria-label="Navegação Rápida Mobile" class="grid grid-cols-2 gap-2 xs:gap-2.5 flex-1 max-w-[240px] xs:max-w-[280px] md:hidden">
-        <a 
-          href="#manifesto" 
-          class="flex items-center justify-center h-14 xs:h-16 px-2 bg-industrial-concrete border border-zinc-700/80 text-xs xs:text-sm font-bold uppercase tracking-wider text-white hover:border-zinc-500 hover:text-target-yellow active:scale-95 transition-all rounded-sm text-center shadow-sm"
-        >
-          SOBRE
-        </a>
-        <a 
-          href="#cobertura" 
-          class="flex items-center justify-center h-14 xs:h-16 px-2 bg-industrial-concrete border border-zinc-700/80 text-xs xs:text-sm font-bold uppercase tracking-wider text-white hover:border-zinc-500 hover:text-target-yellow active:scale-95 transition-all rounded-sm text-center shadow-sm"
-        >
-          CIDADES
-        </a>
-        <a 
-          href="#solucoes" 
-          class="flex items-center justify-center h-14 xs:h-16 px-2 bg-industrial-concrete border border-zinc-700/80 text-xs xs:text-sm font-bold uppercase tracking-wider text-white hover:border-zinc-500 hover:text-target-yellow active:scale-95 transition-all rounded-sm text-center shadow-sm"
-        >
-          SOLUÇÕES
-        </a>
-        <a 
-          href="#contato" 
-          class="flex items-center justify-center h-14 xs:h-16 px-2 bg-target-yellow/10 border-2 border-target-yellow text-xs xs:text-sm font-black uppercase tracking-wider text-target-yellow hover:bg-target-yellow hover:text-black active:scale-95 transition-all rounded-sm text-center shadow-sm shadow-target-yellow/15"
-        >
-          ORÇAMENTO
-        </a>
-      </nav>
+      <!-- Grade de Navegação 2x2 Exclusiva para Mobile (Centralizada e Harmoniosa) -->
+      <div class="flex-1 flex justify-center items-center md:hidden">
+        <nav aria-label="Navegação Rápida Mobile" class="grid grid-cols-2 gap-2 xs:gap-2.5 w-full max-w-[230px] xs:max-w-[260px]">
+          <a 
+            href="#manifesto" 
+            class="flex items-center justify-center text-center leading-none h-12 xs:h-14 px-2 bg-industrial-concrete border border-zinc-700/80 text-xs xs:text-sm font-bold uppercase tracking-wider text-white hover:border-zinc-500 hover:text-target-yellow active:scale-95 transition-all rounded-sm shadow-sm"
+          >
+            SOBRE
+          </a>
+          <a 
+            href="#cobertura" 
+            class="flex items-center justify-center text-center leading-none h-12 xs:h-14 px-2 bg-industrial-concrete border border-zinc-700/80 text-xs xs:text-sm font-bold uppercase tracking-wider text-white hover:border-zinc-500 hover:text-target-yellow active:scale-95 transition-all rounded-sm shadow-sm"
+          >
+            CIDADES
+          </a>
+          <a 
+            href="#solucoes" 
+            class="flex items-center justify-center text-center leading-none h-12 xs:h-14 px-2 bg-industrial-concrete border border-zinc-700/80 text-xs xs:text-sm font-bold uppercase tracking-wider text-white hover:border-zinc-500 hover:text-target-yellow active:scale-95 transition-all rounded-sm shadow-sm"
+          >
+            SOLUÇÕES
+          </a>
+          <a 
+            href="#contato" 
+            class="flex items-center justify-center text-center leading-none h-12 xs:h-14 px-2 bg-target-yellow/10 border-2 border-target-yellow text-xs xs:text-sm font-black uppercase tracking-wider text-target-yellow hover:bg-target-yellow hover:text-black active:scale-95 transition-all rounded-sm shadow-sm shadow-target-yellow/15"
+          >
+            ORÇAMENTO
+          </a>
+        </nav>
+      </div>
 
-      <!-- Navegação Desktop -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider text-zinc-300" aria-label="Navegação Principal Desktop">
+      <!-- Navegação Desktop (Perfeitamente Centralizada) -->
+      <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8 flex-1 text-sm font-semibold uppercase tracking-wider text-zinc-300" aria-label="Navegação Principal Desktop">
         <a href="#manifesto" class="hover:text-target-yellow transition-colors duration-150 py-2">Sobre Nós</a>
         <a href="#solucoes" class="hover:text-target-yellow transition-colors duration-150 py-2">Soluções</a>
         <a href="#cobertura" class="hover:text-target-yellow transition-colors duration-150 py-2">Atendimento</a>
