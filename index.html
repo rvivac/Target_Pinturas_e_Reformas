@@ -343,14 +343,14 @@
   <!-- BLOCO 2: CABEÇALHO PRINCIPAL (NAVBAR INDUSTRIAL COM LOGO OFICIAL EM DESTAQUE) -->
   <!-- ================================================================= -->
   <header class="sticky top-0 z-50 bg-industrial-black/95 backdrop-blur border-b border-industrial-cement transition-all">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3 min-h-[64px] sm:min-h-[84px] md:min-h-[100px] flex items-center justify-between gap-2 sm:gap-4">
-      <!-- Marca / Logo Oficial Ampliado -->
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-3 min-h-[150px] sm:min-h-[84px] md:min-h-[100px] flex items-center justify-between gap-2 sm:gap-4">
+      <!-- Marca / Logo Oficial Ampliado 3x no Mobile -->
       <a href="#" class="flex items-center group focus:outline-none focus:ring-2 focus:ring-target-yellow py-1" aria-label="Target Pinturas e Reformas - Página Inicial">
         <img 
           src="" 
           data-brand-logo="true"
           alt="Target Pinturas e Reformas Logo" 
-          class="h-12 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-200 group-hover:scale-105 filter drop-shadow-[0_2px_10px_rgba(255,184,0,0.15)]"
+          class="h-36 sm:h-20 md:h-24 w-auto object-contain transition-transform duration-200 group-hover:scale-105 filter drop-shadow-[0_4px_20px_rgba(255,184,0,0.35)]"
         />
         <script>document.currentScript.previousElementSibling.src = window.TARGET_LOGO;</script>
       </a>
@@ -383,7 +383,7 @@
   <!-- ================================================================= -->
   <!-- NAVEGAÇÃO RÁPIDA POR CHIPS PARA MOBILE (APP-LIKE UX) -->
   <!-- ================================================================= -->
-  <nav aria-label="Navegação Rápida Mobile" class="md:hidden sticky top-[64px] sm:top-[84px] z-40 bg-industrial-black/95 backdrop-blur border-b border-industrial-cement px-3 py-2 flex items-center gap-2 overflow-x-auto whitespace-nowrap scroll-smooth">
+  <nav aria-label="Navegação Rápida Mobile" class="md:hidden sticky top-[160px] sm:top-[84px] z-40 bg-industrial-black/95 backdrop-blur border-b border-industrial-cement px-3 py-2 flex items-center gap-2 overflow-x-auto whitespace-nowrap scroll-smooth">
     <a href="#manifesto" class="px-3 py-1.5 bg-industrial-concrete border border-industrial-cement text-[11px] font-bold uppercase tracking-wider text-zinc-300 active:bg-target-yellow active:text-black transition-colors rounded-sm">Sobre Nós</a>
     <a href="#solucoes" class="px-3 py-1.5 bg-industrial-concrete border border-industrial-cement text-[11px] font-bold uppercase tracking-wider text-zinc-300 active:bg-target-yellow active:text-black transition-colors rounded-sm">Soluções</a>
     <a href="#cobertura" class="px-3 py-1.5 bg-industrial-concrete border border-industrial-cement text-[11px] font-bold uppercase tracking-wider text-zinc-300 active:bg-target-yellow active:text-black transition-colors rounded-sm">Cidades</a>
@@ -480,8 +480,8 @@
 
         </div>
 
-        <!-- Coluna Direita: Showcase do Logo Oficial com Acabamento Industrial e Alta Visibilidade -->
-        <div class="lg:col-span-5 flex justify-center">
+        <!-- Coluna Direita: Showcase do Logo Oficial com Acabamento Industrial e Alta Visibilidade (Oculto no Mobile, visível a partir de lg) -->
+        <div class="hidden lg:flex lg:col-span-5 justify-center">
           <div class="relative w-full max-w-lg bg-industrial-concrete/95 border-2 border-industrial-cement p-4 sm:p-10 shadow-2xl group hover:border-target-yellow transition-all duration-300">
             <!-- Marcadores de cantos industriais reforçados -->
             <div class="absolute -top-2 -left-2 w-4 h-4 bg-target-yellow shadow-[0_0_12px_#FFB800]"></div>
