@@ -156,20 +156,39 @@
       position: relative;
     }
 
-    /* Telas maiores (tablets, laptops e desktops) */
-    @media (min-width: 641px) {
+    /* Telas intermediárias (tablets) */
+    @media (min-width: 641px) and (max-width: 1023px) {
       .preloader-container {
-        gap: clamp(1.25rem, 2.5vmin, 2rem);
+        gap: clamp(1.5rem, 2.5vmin, 2rem);
         padding: clamp(1rem, 4vmin, 3rem);
       }
       .preloader-logo-img {
-        width: clamp(240px, 28vmin, 380px);
-        max-width: 50vw;
-        max-height: 40vh;
+        width: clamp(320px, 42vmin, 480px);
+        max-width: 65vw;
+        max-height: 48vh;
       }
       .preloader-bar-track {
-        width: clamp(120px, 18vmin, 200px);
-        height: clamp(2px, 0.35vmin, 4px);
+        width: clamp(140px, 20vmin, 220px);
+        height: clamp(3px, 0.35vmin, 4px);
+      }
+    }
+
+    /* Desktop e telas grandes (laptops, monitores widescreen e 4K) */
+    @media (min-width: 1024px) {
+      .preloader-container {
+        gap: clamp(1.75rem, 3.5vh, 2.75rem);
+        padding: clamp(1.5rem, 4vmin, 4rem);
+      }
+      .preloader-logo-img {
+        /* Presença imersiva e marcante no desktop */
+        width: clamp(460px, 44vw, 680px);
+        max-width: 65vw;
+        max-height: 60vh;
+        filter: drop-shadow(0 10px 48px rgba(255, 184, 0, 0.38));
+      }
+      .preloader-bar-track {
+        width: clamp(200px, 18vw, 320px);
+        height: 4px;
       }
     }
 
